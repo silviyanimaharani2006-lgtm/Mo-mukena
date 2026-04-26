@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Toko Mukena Rancakihiang</title>
+
+<style>
+* {margin:0;padding:0;box-sizing:border-box;font-family:Arial;}
+nav {background:#ff69b4;padding:15px;display:flex;justify-content:space-between;color:white;}
+nav ul {display:flex;list-style:none;}
+nav ul li {margin-left:20px;cursor:pointer;}
+
+.hero {
+background:url('https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf') center/cover;
+height:300px;color:white;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
+}
+.hero button {padding:10px;background:#ff69b4;color:white;border:none;margin-top:10px;}
+
+.produk {padding:20px;text-align:center;}
+.produk-container {display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;margin-top:20px;}
+.card {border:1px solid #ddd;padding:10px;border-radius:10px;}
+.card img {width:100%;height:150px;object-fit:cover;}
+.card button {margin-top:10px;background:#ff69b4;color:white;border:none;padding:8px;}
+
+.keranjang {padding:20px;background:#f9f9f9;}
+footer {background:#333;color:white;text-align:center;padding:15px;}
+</style>
+</head>
+
+<body>
+
+<nav>
+<h2>🧕 Toko Mukena</h2>
+<ul>
+<li>Home</li>
+<li>Kategori</li>
+<li onclick="lihatKeranjang()">Keranjang (<span id="jumlah">0</span>)</li>
+</ul>
+</nav>
+
+<section class="hero">
+<h1>Selamat Datang di Toko Online Mukena</h1>
+<p>Kp Rancakihiang</p>
+<button onclick="scrollProduk()">Lihat Produk</button>
+</section>
+
+<section class="produk" id="produk">
+<h2>Produk Mukena Rayon</h2>
+
+<div class="produk-container">
+<div class="card">
+<img src="https://via.placeholder.com/200x150/ffb6c1">
+<h3>Mukena Pink</h3>
+<p>Rp 150.000</p>
+<button onclick="tambahKeranjang('Mukena Pink')">Tambah ke Keranjang</button>
+</div>
+
+<div class="card">
+<img src="https://via.placeholder.com/200x150/ffff99">
+<h3>Mukena Yellow</h3>
+<p>Rp 150.000</p>
+<button onclick="tambahKeranjang('Mukena Yellow')">Tambah ke Keranjang</button>
+</div>
+
+<div class="card">
+<img src="https://via.placeholder.com/200x150/d2b48c">
+<h3>Mukena Coklat</h3>
+<p>Rp 150.000</p>
+<button onclick="tambahKeranjang('Mukena Coklat')">Tambah ke Keranjang</button>
+</div>
+
+<div class="card">
+<img src="https://via.placeholder.com/200x150/f5deb3">
+<h3>Mukena Cream</h3>
+<p>Rp 150.000</p>
+<button onclick="tambahKeranjang('Mukena Cream')">Tambah ke Keranjang</button>
+</div>
+</div>
+</section>
+
+<section class="keranjang" id="keranjang">
+<h2>Keranjang Belanja</h2>
+<ul id="listKeranjang"></ul>
+</section>
+
+<footer>
+<p>Kontak: 08xxxxxxxxxx | Instagram: @tokomukena</p>
+<p>© 2026 Toko Mukena Rancakihiang</p>
+</footer>
+
+<script>
+let keranjang=[];
+
+function tambahKeranjang(nama){
+keranjang.push(nama);
+document.getElementById("jumlah").innerText=keranjang.length;
+tampilKeranjang();
+}
+
+function tampilKeranjang(){
+let list=document.getElementById("listKeranjang");
+list.innerHTML="";
+keranjang.forEach(item=>{
+let li=document.createElement("li");
+li.innerText=item;
+list.appendChild(li);
+});
+}
+
+function lihatKeranjang(){
+document.getElementById("keranjang").scrollIntoView({behavior:"smooth"});
+}
+
+function scrollProduk(){
+document.getElementById("produk").scrollIntoView({behavior:"smooth"});
+}
+</script>
+
+</body>
+</html>
